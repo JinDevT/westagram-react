@@ -6,7 +6,7 @@ class Nav extends Component {
     render() {
         return (
             <nav className="Nav">
-                <ul class="link_list">
+                <ul className="link_list">
                     <li>
                         <a href="">
                             <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="explore_img"/>

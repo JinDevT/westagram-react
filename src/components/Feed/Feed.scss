@@ -43,13 +43,14 @@
                 .comments_tit {
                     font-size: 15px;
                     line-height: 1.4;
-                    .user_id {
-                        font-weight: bold;
-                    }
+                    
                     .comment_contents {
                         padding-left: 5px;
                     }
                 }
+            }
+            .user_id {
+                font-weight: bold;
             }
             .feed_time {
                 line-height: 1.4;
