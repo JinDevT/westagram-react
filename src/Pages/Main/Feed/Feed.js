@@ -87,7 +87,6 @@ class Feed extends Component {
                     </form>
                 
                 </li>
-                
             </>
         );
     }

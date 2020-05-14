@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../images/1600px-Instagram_logo.svg.png';
-import '../style/reset.css';
+import { Link } from 'react-router-dom';
+import logo from '../../images/1600px-Instagram_logo.svg.png';
 import './Login.scss';
+
 class Login extends Component {
     render() {
         return (
@@ -11,9 +12,9 @@ class Login extends Component {
                         <header className="header">
                             <h1>
                                 <span className="header_tit">로고</span>
-                                <a href="#" className="page_move">
+                                <Link to="/" className="page_move">
                                     <img src={logo} alt="logo"/>
-                                </a>
+                                </Link>
                             </h1>
                         </header>
                         <form className="form">
@@ -31,9 +32,9 @@ class Login extends Component {
                         </form>
                     
                         <div className="password_forget">
-                            <a href="#" className="page_move">
+                            <Link to="/" className="page_move">
                                 <span>비밀번호를 잊으셨나요?</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

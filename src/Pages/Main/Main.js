@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import Header from '../components/Header/Header';
-import ContentLeft from '../components/ContentLeft/ContentLeft';
-import ContentRigth from '../components/ContentRigth/ContentRigth';
+import Header from '../../components/Header/Header';
+import ContentLeft from '../../components/ContentLeft/ContentLeft';
+import ContentRigth from '../../components/ContentRigth/ContentRigth';
 
-import '../style/reset.css';
-import '../style/common.css';
 import './Main.scss';
-import Feed from '../components/Feed/Feed';
+
 
 
 
