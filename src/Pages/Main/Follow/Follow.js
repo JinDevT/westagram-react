@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import profileImg from '../../images/profile-img.jpg';
 import './Follow.scss';
 
@@ -8,9 +9,9 @@ class Follow extends Component {
             <div className="Follow follow_info">
                 <div className="follow_title">
                     <span className="text_tit">회원님을 위한 추천</span>
-                    <a href="#">
+                    <Link to="/follow_list">
                         <span className="sub_tit">모두보기</span>
-                    </a>
+                    </Link>
                 </div>
                 <div className="follow_list_wrap feed_profile test">
                     <ul className="profile follow_list">

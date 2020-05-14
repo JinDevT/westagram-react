@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../style/common.css';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends Component {
@@ -8,19 +8,19 @@ class Nav extends Component {
             <nav className="Nav">
                 <ul className="link_list">
                     <li>
-                        <a href="">
+                        <Link to="/explore">
                             <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png" alt="explore_img"/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link to="/heart">
                             <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="heart_img"/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link to="/profile">
                             <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/profile.png" alt="profile_img"/>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

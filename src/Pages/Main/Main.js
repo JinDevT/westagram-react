@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import ContentLeft from '../../components/ContentLeft/ContentLeft';
 import ContentRigth from '../../components/ContentRigth/ContentRigth';
-
 import './Main.scss';
-
-
-
-
-
-
 class Main extends Component {
     render() {
         return (

@@ -56,8 +56,8 @@
                     .btn {
                         width: 100%;
                         height: 100%;
-                        background-color: #bfdffd;
-                        border: 1px solid #bfdffd;
+                        // background-color: #bfdffd;
+                        // border: 1px solid #bfdffd;
                         border-radius: 4px;
                         span {
                             font-size: 18px;
@@ -65,6 +65,14 @@
                             font-weight: bold;
                             color: #fff;
                         }
+                    }
+                    .btn.active {
+                        background-color: #4dabf7;
+                        border: 1px solid #4dabf7;
+                    }
+                    .btn.disabled {
+                        background-color: #bfdffd;
+                        border: 1px solid #bfdffd;
                     }
                 }
             }

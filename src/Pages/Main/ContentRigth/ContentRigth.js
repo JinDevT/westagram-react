@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Story from '../Story/Story';
 import Follow from '../Follow/Follow';
 import Footer from '../Footer/Footer';
-
 import profileImg from '../../images/profile-img.jpg';
 import './ContentRigth.scss';
 
