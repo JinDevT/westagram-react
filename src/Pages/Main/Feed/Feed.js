@@ -1,9 +1,60 @@
 import React, { Component } from 'react';
-import profileImg from '../../images/profile-img.jpg';
+import profileImg from '../../../images/profile-img.jpg';
 import './Feed.scss';
-
+import CmtList from '../CmtList/CmtList';
 class Feed extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            comments :[],
+            id : 1,
+            userId : "jintae",
+            inputComment : "",
+            isActive: false
+        }
+    }
+
+    // button color change
+    buttonChange = () => {
+        const { inputComment } = this.state;
+        if(inputComment.length > 0) {
+            this.setState({isActive : true});
+        } else {
+            this.setState({isActive : false});
+        }
+    }
+
+    // input value
+    handleInput = (e) => {
+        this.setState({
+           [e.target.name] :  e.target.value
+        });
+    }
+
+    // button click comment update
+    handleCreate = (e) => {
+        const { comments, inputComment, userId } = this.state;
+        comments.push({ id : this.state.id + 1, userId, inputComment});
+        this.setState({
+            //comments: comments,
+            comments,
+            inputComment : "",
+        }, () => {this.buttonChange()});
+    }
+
+    // enter click 
+    handleKypress = (e) => {
+        if(e.key === "Enter") {
+            e.preventDefault();
+            console.log("Enter Keypress");
+            this.handleCreate();
+        }
+    }
+
     render() {
+        const { comments, inputComment, isActive } = this.state;
+        const { buttonChange, handleInput, handleCreate, handleKypress } = this; // 이것도 비구조화 할당을 할 수 있다.
+
         return (
             <>
                 <li className="Feed">
@@ -59,14 +110,27 @@ class Feed extends Component {
                                     </p>
                                 </div>
                             </div>
+                            <div className="comment_list comments_margin feed_user">
+                                <div className="comments_info">
+                                    <div className="comments_tit">
+                                        <span className="user_id">아이디</span>
+                                        <span className="comment_contents">쿠킹클래스</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="comment_list comments_margin">
                                 <ul className="comments_info comment_list_ul">
-                                    <li>
-                                        <div className="comments_tit">
-                                            <span className="user_id">아이디</span>
-                                            <span className="comment_contents">쿠킹클래스</span>
-                                        </div>
-                                    </li>
+                                    {
+                                        comments.map((v, i) => {
+                                          return (
+                                              <CmtList 
+                                                key = {i}
+                                                userId = {v.userId}
+                                                inputComment = {v.inputComment}
+                                              />
+                                          );
+                                        })
+                                   }
                                 </ul>
                                 <div className="feed_time">
                                     <p className="time">4시30분</p>
@@ -74,18 +138,21 @@ class Feed extends Component {
                             </div>
                         </div>
                     </div>
-                
-                    <form className="comments_form">
+                    
+                    <form className="comments_form" >
                         <div className="input_box">
-                            <input type="text" placeholder="댓글달기..." id="comment_input" />
+                            <input type="text" value={inputComment} placeholder="댓글달기..." id="comment_input" name="inputComment" 
+                            onChange={handleInput} 
+                            onKeyUp={buttonChange}
+                            onKeyPress={handleKypress}
+                            />
                         </div>
-                        <div className="button_box">
-                            <button type="button" className="btn" disabled="disabled">
-                                <span className="">게시</span>
+                        <div className="button_box" >
+                            <button type="button" className="btn" onClick={handleCreate}>
+                                <span className={"comment_submit " + (isActive ? "active" : "disabled")}>게시</span>
                             </button>
                         </div>
                     </form>
-                
                 </li>
             </>
         );

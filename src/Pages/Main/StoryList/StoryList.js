@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import profileImg from '../../images/profile-img.jpg'
+import profileImg from '../../../images/profile-img.jpg'
 
 class StoryList extends Component {
     render() {

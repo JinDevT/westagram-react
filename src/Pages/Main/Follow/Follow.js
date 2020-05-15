@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import profileImg from '../../images/profile-img.jpg';
+import profileImg from '../../../images/profile-img.jpg';
 import './Follow.scss';
 
 class Follow extends Component {

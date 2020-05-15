@@ -40,17 +40,19 @@
             margin-bottom: 10px;
             li {
                 margin-bottom: 3px;
-                .comments_tit {
-                    font-size: 15px;
-                    line-height: 1.4;
-                    
-                    .comment_contents {
-                        padding-left: 5px;
-                    }
-                }
+                
+            }
+            .comments_tit {
+                font-size: 15px;
+                line-height: 1.4;
+                
+                
             }
             .user_id {
                 font-weight: bold;
+            }
+            .comment_contents {
+                padding-left: 5px;
             }
             .feed_time {
                 line-height: 1.4;
@@ -59,6 +61,9 @@
                     color: #adb5bd;
                 }
             }
+        }
+        .comments_margin.feed_user {
+            margin-bottom: 3px;
         }
     }
     .comments_form {
@@ -87,10 +92,17 @@
                 border: none;
                 span {
                     font-size: 15px;
+                }
+                .comment_submit.active {
+                    color: #4dabf7;
+                }
+                .comment_submit.disabled {
                     color: #bfdffd;
+                   
                 }
             }
         }
+        
     }
 }
 .Feed:last-child {

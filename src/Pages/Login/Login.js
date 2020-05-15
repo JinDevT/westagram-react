@@ -23,7 +23,7 @@ class Login extends Component {
     // button change
     buttonChange = () => {
         const { inputId, inputPassword } = this.state;
-        if(inputId.includes("@") && inputPassword > 4) {
+        if(inputId.includes("@") && inputPassword.length >= 5) {
            this.setState({isActive : true});
         } else {
             this.setState({isActive : false});
@@ -37,7 +37,7 @@ class Login extends Component {
         console.log("전달받은 id:: ", inputId);
         console.log("전달받은 password:: ", inputPassword);
 
-        if(inputId.includes("@") && inputPassword > 3) {
+        if(inputId.includes("@") && inputPassword.length > 4) {
             this.props.history.push('/main');
         }
     }
