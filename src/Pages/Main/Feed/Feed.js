@@ -7,7 +7,7 @@ class Feed extends Component {
         super(props);
         this.state = {
             comments :[],
-            id : 1,
+            //id : 1,
             userId : "jintae",
             inputComment : "",
             isActive: false
@@ -27,18 +27,18 @@ class Feed extends Component {
     // input value
     handleInput = (e) => {
         this.setState({
-           [e.target.name] :  e.target.value
+           [e.target.name] :  e.target.value 
         });
     }
 
     // button click comment update
     handleCreate = (e) => {
         const { comments, inputComment, userId } = this.state;
-        comments.push({ id : this.state.id + 1, userId, inputComment});
+        comments.push({ userId, inputComment });
         this.setState({
             //comments: comments,
             comments,
-            inputComment : "",
+            inputComment : ""
         }, () => {this.buttonChange()});
     }
 
@@ -54,7 +54,6 @@ class Feed extends Component {
     render() {
         const { comments, inputComment, isActive } = this.state;
         const { buttonChange, handleInput, handleCreate, handleKypress } = this; // 이것도 비구조화 할당을 할 수 있다.
-
         return (
             <>
                 <li className="Feed">
@@ -121,12 +120,13 @@ class Feed extends Component {
                             <div className="comment_list comments_margin">
                                 <ul className="comments_info comment_list_ul">
                                     {
-                                        comments.map((v, i) => {
+                                        comments.map((comment, index) => {
+                                            console.log(comment);
                                           return (
                                               <CmtList 
-                                                key = {i}
-                                                userId = {v.userId}
-                                                inputComment = {v.inputComment}
+                                                key = {index}
+                                                userId = {comment.userId}
+                                                inputComment = {comment.inputComment}
                                               />
                                           );
                                         })

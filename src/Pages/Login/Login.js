@@ -17,7 +17,7 @@ class Login extends Component {
     handleInput = (e) => {
         this.setState({
             [e.target.name] : e.target.value
-        });
+        }, () => this.buttonChange());
     }
 
     // button change
@@ -58,10 +58,10 @@ class Login extends Component {
                         </header>
                         <form className="form">
                             <div className="input_box">
-                                <input id="id" type="text" placeholder="전화번호, 사용자 이름 또는 이메일" value={inputId} name="inputId" onChange={this.handleInput} onKeyUp={this.buttonChange}/>
+                                <input id="id" type="text" placeholder="전화번호, 사용자 이름 또는 이메일" value={inputId} name="inputId" onChange={this.handleInput} />
                             </div>
                             <div className="input_box">
-                                <input id="password" type="password" placeholder="비밀번호" value={inputPassword} name="inputPassword" onChange={this.handleInput} onKeyUp={this.buttonChange}/>
+                                <input id="password" type="password" placeholder="비밀번호" value={inputPassword} name="inputPassword" onChange={this.handleInput}/>
                             </div>
                             <div className="button_box">
                                 <button type="submit" className={"btn " + (isActive ? "active" : "disabled")}  onClick={this.handleGoMain}>
