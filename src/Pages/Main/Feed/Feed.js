@@ -3,11 +3,11 @@ import profileImg from '../../../images/profile-img.jpg';
 import './Feed.scss';
 import CmtList from '../CmtList/CmtList';
 class Feed extends Component {
+    id = 1;
     constructor(props) {
         super(props);
         this.state = {
             comments :[],
-            //id : 1,
             userId : "jintae",
             inputComment : "",
             isActive: false
@@ -31,10 +31,19 @@ class Feed extends Component {
         });
     }
 
+     // enter click 
+     handleKypress = (e) => {
+        if(e.key === "Enter") {
+            e.preventDefault();
+            console.log("Enter Keypress");
+            this.handleCreate();
+        }
+    }
+
     // button click comment update
     handleCreate = (e) => {
         const { comments, inputComment, userId } = this.state;
-        comments.push({ userId, inputComment });
+        comments.push({ id: this.id++, userId, inputComment });
         this.setState({
             //comments: comments,
             comments,
@@ -42,13 +51,11 @@ class Feed extends Component {
         }, () => {this.buttonChange()});
     }
 
-    // enter click 
-    handleKypress = (e) => {
-        if(e.key === "Enter") {
-            e.preventDefault();
-            console.log("Enter Keypress");
-            this.handleCreate();
-        }
+    handleRemove = (id) => {
+        const { comments } = this.state;
+        this.setState({
+            comments: comments.filter(comment => comment.id !== id)
+        })
     }
 
     render() {
@@ -121,12 +128,14 @@ class Feed extends Component {
                                 <ul className="comments_info comment_list_ul">
                                     {
                                         comments.map((comment, index) => {
-                                            console.log(comment);
+                                            console.log(comment.id);
                                           return (
                                               <CmtList 
-                                                key = {index}
-                                                userId = {comment.userId}
-                                                inputComment = {comment.inputComment}
+                                                key={index}
+                                                // userId = {comment.userId}
+                                                // inputComment = {comment.inputComment}
+                                                comments={comment}
+                                                onRemove={this.handleRemove}
                                               />
                                           );
                                         })
