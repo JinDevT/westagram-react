@@ -32,7 +32,7 @@ class Feed extends Component {
     }
 
      // enter click 
-     handleKypress = (e) => {
+     handleKeypres = (e) => {
         if(e.key === "Enter") {
             e.preventDefault();
             console.log("Enter Keypress");
@@ -43,14 +43,14 @@ class Feed extends Component {
     // button click comment update
     handleCreate = (e) => {
         const { comments, inputComment, userId } = this.state;
-        comments.push({ id: this.id++, userId, inputComment });
+        const newComments = comments.concat({ id: this.id++, userId, inputComment });
         this.setState({
-            //comments: comments,
-            comments,
+            comments: newComments,
             inputComment : ""
         }, () => {this.buttonChange()});
     }
 
+    // button click comment remove
     handleRemove = (id) => {
         const { comments } = this.state;
         this.setState({
@@ -60,7 +60,8 @@ class Feed extends Component {
 
     render() {
         const { comments, inputComment, isActive } = this.state;
-        const { buttonChange, handleInput, handleCreate, handleKypress } = this; // 이것도 비구조화 할당을 할 수 있다.
+        const { buttonChange, handleInput, handleCreate, handleKeypres } = this; // 이것도 비구조화 할당을 할 수 있다.
+        //console.log('rendering')
         return (
             <>
                 <li className="Feed">
@@ -128,12 +129,9 @@ class Feed extends Component {
                                 <ul className="comments_info comment_list_ul">
                                     {
                                         comments.map((comment, index) => {
-                                            console.log(comment.id);
                                           return (
                                               <CmtList 
-                                                key={index}
-                                                // userId = {comment.userId}
-                                                // inputComment = {comment.inputComment}
+                                                key={comment.id}
                                                 comments={comment}
                                                 onRemove={this.handleRemove}
                                               />
@@ -153,7 +151,7 @@ class Feed extends Component {
                             <input type="text" value={inputComment} placeholder="댓글달기..." id="comment_input" name="inputComment" 
                             onChange={handleInput} 
                             onKeyUp={buttonChange}
-                            onKeyPress={handleKypress}
+                            onKeyPress={handleKeypres}
                             />
                         </div>
                         <div className="button_box" >
